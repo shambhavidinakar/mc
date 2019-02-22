@@ -35,7 +35,7 @@ def scheduler(meetings)
         type = meeting.type
         duration = meeting.duration
         # handling offsite meeting
-            if(type == "offsite")
+            if type == "offsite"
                 calendar[name] = [(offsite - duration + 9)%12,(offsite+9)%12]
                 offsite = offsite - duration - 0.5
             else
@@ -43,23 +43,19 @@ def scheduler(meetings)
                 onsite = onsite + duration    
             end
     end
-    if(offsite == onsite) 
+    if offsite >= onsite 
         puts "Yes can fit. One possible solution would be"
         puts calendar.each { |x, y| puts "#{x}: #{y}" }
-    elsif(offsite > onsite)
+    else offsite < onsite
         puts "No,can't fit"
-    else
-        #I have to test if I can bump offsite meeting by half hour cause i filled for worst case. 
-    end
+    end 
 end
 
 
 meetings = []
 meetings << Meeting.new("1",3,"onsite")
-meetings << Meeting.new("2",3,"onsite")
-meetings << Meeting.new("3",3,"offsite")
-meetings << Meeting.new("4",3,"offsite")
+meetings << Meeting.new("2",2,"onsite")
+meetings << Meeting.new("3",1,"offsite")
+meetings << Meeting.new("4",0.5,"offsite")
     
 scheduler(meetings)
-                
-        
