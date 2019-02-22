@@ -23,13 +23,9 @@ def scheduler(meetings)
     #hash for my calendar 
     calendar = Hash.new { |h, k| h[k] = [] } # no of hours filled up in the day 
     #two pointers, one for onsite and one for offsite
-    #best way for offsite meeting is to fill from end of the day forwards and onsite meeting from begining to backwards
+    #best way for offsite meeting is to fill from end of the day forwards and onsite meeting from begining of the day
     onsite = 0 
     offsite = 8
-    #last meeting of the day
-    last_meeting = false
-    # if the last meeting was an offsite meeting
-    lm_offsite = false
     meetings.each do |meeting|
         name = meeting.name
         type = meeting.type
