@@ -1,3 +1,24 @@
+class Meeting
+    def initialize(name,duration,type)
+        @name = name
+        @duration = duration
+        @type =type
+    end
+
+    def name()
+        return @name 
+    end
+
+    def duration()
+        return @duration
+    end
+
+    def type()
+        return @type
+    end
+end
+
+
 def scheduler(meetings)
     #hash for my calendar 
     calendar = Hash.new { |h, k| h[k] = [] } # no of hours filled up in the day 
@@ -14,7 +35,6 @@ def scheduler(meetings)
         type = meeting.type
         duration = meeting.duration
         # handling offsite meeting
-        while offsite >= onsite
             if(type == "offsite")
                 calendar[name] = [(offsite - duration + 9)%12,(offsite+9)%12]
                 offsite = offsite - duration - 0.5
@@ -22,7 +42,6 @@ def scheduler(meetings)
                 calendar[name] = [(onsite+9)%12, (onsite+duration+9)%12]
                 onsite = onsite + duration    
             end
-        end
     end
     if(offsite == onsite) 
         puts "Yes can fit. One possible solution would be"
@@ -35,8 +54,12 @@ def scheduler(meetings)
 end
 
 
-        
+meetings = []
+meetings << Meeting.new("1",3,"onsite")
+meetings << Meeting.new("2",3,"onsite")
+meetings << Meeting.new("3",3,"offsite")
+meetings << Meeting.new("4",3,"offsite")
     
-            
+scheduler(meetings)
                 
         
