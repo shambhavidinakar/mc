@@ -35,13 +35,22 @@ def scheduler(meetings)
         type = meeting.type
         duration = meeting.duration
         # handling offsite meeting
-            if type == "offsite"
-                calendar[name] = [(offsite - duration + 9)%12,(offsite+9)%12]
-                offsite = offsite - duration - 0.5
-            else
-                calendar[name] = [(onsite+9)%12, (onsite+duration+9)%12]
-                onsite = onsite + duration    
-            end
+        if type == "offsite"
+            start = (offsite - duration + 9)%12
+            finish = (offsite+9)%12
+            offsite = offsite - duration - 0.5
+        else
+            start = (onsite+9)%12
+            finish = (onsite+duration+9)%12
+            onsite = onsite + duration    
+        end
+        if start == 0
+            start = 12
+        end
+        if finish == 0 
+            finish = 12
+        end
+        calendar[name] = [start,finish]
     end
     if offsite >= onsite 
         puts "Yes can fit. One possible solution would be"
