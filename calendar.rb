@@ -62,9 +62,32 @@ end
 
 
 meetings = []
-meetings << Meeting.new("1",3,"onsite")
-meetings << Meeting.new("2",2,"onsite")
-meetings << Meeting.new("3",1,"offsite")
-meetings << Meeting.new("4",0.5,"offsite")
+meetings << Meeting.new("Meeting 1",3,"onsite")
+meetings << Meeting.new("Meeting 2",2,"onsite")
+meetings << Meeting.new("Meeting 3",1,"offsite")
+meetings << Meeting.new("Meeting 4",0.5,"offsite")
     
 scheduler(meetings)
+
+meetings2 = []
+meetings2 << Meeting.new("Meeting 1",1.5,"onsite")
+meetings2 << Meeting.new("Meeting 2",2,"offsite")
+meetings2 << Meeting.new("Meeting 3",1,"onsite")
+meetings2 << Meeting.new("Meeting 4",1,"offsite")
+meetings2 << Meeting.new("Meeting 4",1,"offsite")
+
+scheduler(meetings2)
+
+meetings3 = []
+meetings3 << Meeting.new("Meeting 1",4,"offsite")
+meetings3 << Meeting.new("Meeting 2",4,"offsite")
+
+scheduler(meetings3)
+
+meetings4 = []
+meetings4 << Meeting.new("Meeting 1",0.5,"offsite")
+meetings4 << Meeting.new("Meeting 2",0.5,"onsite")
+meetings4 << Meeting.new("Meeting 3",2.5,"offsite")
+meetings4 << Meeting.new("Meeting 4",3,"onsite")
+
+scheduler(meetings4)
